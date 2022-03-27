@@ -15,6 +15,10 @@ class UserController extends Controller
         $data['title'] = 'ลงทะเบียนศิษย์เก่า';
         return view('user/register', $data);
     }
+    public function login(){
+        $data['title'] = 'เข้าสู่ระบบ';
+        return view('user/login', $data);
+    }
 
     public function register_action(Request $request){
         
