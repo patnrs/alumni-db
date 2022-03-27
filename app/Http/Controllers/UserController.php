@@ -36,7 +36,6 @@ class UserController extends Controller
 
             'house_number' => 'required',
             'village_number' => 'required',
-            'alley' => 'required',
             'sub_district' => 'required',
             'district' => 'required',
             'province' => 'required',

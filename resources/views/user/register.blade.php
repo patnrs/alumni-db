@@ -12,11 +12,6 @@
                             <div class="col-md-2 g-2">
                                 <label for="std_id" class="form-label">รหัสนักศึกษา</label>
                                 <input id="std_id" type="text" class="form-control @error('std_id') is-invalid @enderror" name="รหัสนักศึกษา" value="{{ old('std_id') }}" >
-                                @error('std_id')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
                             </div>
                             <div class="col-md-4 g-2">
                                 <label for="gen_name" class="form-label">รุ่น</label>
