@@ -17,7 +17,10 @@
           <form class="com-md" action="{{ route('login.action')}}" method="post">
             <div class="card">
               <div class="card-body">
-                <div class="mb-3">
+                <div class="btn d-flex justify-content-center">
+                  <img src="upload/img/logo.png" alt="logo" style="width:300px">
+              </div>
+                <div class="mb-3 mt-2">
                   <h2 class="text-center">@yield('title', $title)</h2>
                   <label for="" class="form-label">{{ __('รหัสนักศึกษา') }}</label>
                   <input type="email" class="form-control" id="std_id" >
