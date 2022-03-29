@@ -8,16 +8,62 @@ use App\Models\Career;
 use GrahamCampbell\ResultType\Success;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Controllers\Auth;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
+  
+    public function index(){
+        $data['title'] = 'ระบบฐานข้อมูลศิษย์เก่า';
+        return view('welcome', $data);
+    }
     public function register(){
         $data['title'] = 'ลงทะเบียนศิษย์เก่า';
         return view('user/register', $data);
     }
+    public function search_alumni(){
+        $data['title'] = 'ค้นหาข้อมูลศิษย์เก่า';
+        return view('user/search_alumni', $data);
+    }
+    
+    public function simple(Request $request)
+    {
+        $data = DB::table('user');
+        if( $request->input('search')){
+            $data = $data->where('name', 'LIKE', "%" . $request->search . "%");
+        }
+        $data = $data->paginate(10);
+        return view('user/search_alumni', $data);
+    }
+
+    public function advance(Request $request)
+    {
+        $data = DB::table('user');
+        if( $request->name){
+            $data = $data->where('firstname,lastname', 'LIKE', "%" . $request->name . "%");
+        }
+        if( $request->gender){
+            $data = $data->where('gender', 'LIKE', "%" . $request->gender . "%");
+        }
+        if( $request->gen_id){
+            $data = $data->where('gen_id', 'LIKE', "%" . $request->gen_id . "%");
+        }
+        $data = $data->paginate(10);
+        return view('user/search_alumni', $data);
+    }
+    
+
     public function login(){
         $data['title'] = 'เข้าสู่ระบบ';
         return view('user/login', $data);
+    }
+
+    public function login_action(Request $request){
+        $request->validate([
+            'std_id'=> 'required',
+            'password'=> 'required',
+        ]);
     }
 
     public function register_action(Request $request){

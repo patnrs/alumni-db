@@ -1,4 +1,14 @@
 @extends('layouts.app')
+<div class="container">
+  <nav class="navbar navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand"></a>
+      <form class="d-flex">
+        <a class="btn btn-secondery g-2" href="{{ route("index")}}">{{ __('หน้าหลัก') }}</a>
+      </form>
+    </div>
+  </nav>
+</div>
 @section('content')
     <div class="container">
       <div class="row justify-content-center">
